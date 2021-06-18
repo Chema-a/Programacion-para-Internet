@@ -31,4 +31,6 @@ Route::resource('homework',HomeworkController::class);
 
 Route::post('subject/{subject}/add-homework/',[SubjectController::class, 'addHomework'])->name('subject.addHomework');
 Route::post('subject/{subject}/add-teacher/',[SubjectController::class, 'addTeacher'])->name('subject.addTeacher');
+Route::get('subject/{subject}/{homework}/', [HomeworkController::class, 'show'])->name('homework.show');
+Route::get('subject/{subject}/{homework}/edit-homework/',[HomeworkController::class, 'edit'])->name('homework.edit');
 Route::resource('subject',SubjectController::class);

@@ -22,6 +22,9 @@
             <tr>
                 <td>{{ $registrator->code }}</td>
                 <td>{{ $registrator->email}}</td>
+                <td>
+                    <a href="{{ route('registrator.edit', $registrator) }}">Editar</a>
+                </td>
             </tr>
         @endforeach
     </tbody>

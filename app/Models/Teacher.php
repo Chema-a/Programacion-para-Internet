@@ -15,4 +15,17 @@ class Teacher extends Model
     {
         return $this->belongsToMany(Subject::class);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    /**
+ * Get the route key for the model.
+ *
+ * @return string
+ */
+public function getRouteKeyName()
+{
+    return 'name_teacher';
+}
 }

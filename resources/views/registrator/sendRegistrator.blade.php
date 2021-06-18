@@ -9,6 +9,5 @@
 <body>
     <h1>Registro de Usuario</h1>
     <p>Codigo de registro: {{ $code->code }}</p>
-    <p>Awebo si sirve </p> 
 </body>
 </html>

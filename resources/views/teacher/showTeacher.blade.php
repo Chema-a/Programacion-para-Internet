@@ -12,10 +12,10 @@
     <table>
         <thead>
             <tr>
-        <th>ID</th>
-        <th>Titulo</th>
-        <th>Descripcion</th>
-        <th>Fecha limite</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Clases registradas</th>
     </tr>
     </thead>
     <tbody>
@@ -25,15 +25,21 @@
                    {{ $teacher->last_name_teacher }}
                     
                 </td>
+
                 <td>{{ $teacher->email }}</td>
                 <td>{{ $teacher->city }}</td>
+                <td>
+                    @foreach ($teacher->subjects as $subject)
+                        <a href="{{ route('subject.show', $subject) }}">{{ $subject->name }}</a>
+                    @endforeach
+                </td>
             </tr>
     </tbody>
     </table>
     <form action="{{ route('teacher.destroy', $teacher) }}" method="POST">
         @csrf
         @method('DELETE')
-        <input type="submit" value="Eliminar programa">
+        <input type="submit" value="Eliminar maestro">
 
     </form>
 </body>

@@ -64,7 +64,7 @@ class RegistratorController extends Controller
      */
     public function edit(Registrator $registrator)
     {
-        //
+        return view('registrator.formRegistrator', compact('registrator'));
     }
 
     /**
@@ -76,7 +76,11 @@ class RegistratorController extends Controller
      */
     public function update(Request $request, Registrator $registrator)
     {
-        //
+        $data = $request->all();
+        $new = new Registrator($data);
+        Registrator::where('id', $registrator->id)->update($request->except('_token', '_method'));
+        Mail::to($request->email)->send(new CodeGenerator($new));
+        return redirect()->route('registrator.index');
     }
 
     /**
@@ -87,6 +91,7 @@ class RegistratorController extends Controller
      */
     public function destroy(Registrator $registrator)
     {
-        //
+        $registrator -> delete();
+        return redirect()->route('registrator.index');
     }
 }

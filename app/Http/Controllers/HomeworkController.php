@@ -39,7 +39,7 @@ class HomeworkController extends Controller
     public function store(Request $request)
     {
         $request= Homework::create($request->all());
-        return redirect()->route('subject.index');
+        return redirect()->route('subject.show', $request->subject);
         
     }
 
@@ -49,9 +49,9 @@ class HomeworkController extends Controller
      * @param  \App\Models\Homework  $homework
      * @return \Illuminate\Http\Response
      */
-    public function show(Homework $homework)
+    public function show(Subject $subject, Homework $homework)
     {
-        //
+        return view('homework.showHomework', compact('homework'));
     }
 
     /**
@@ -60,9 +60,10 @@ class HomeworkController extends Controller
      * @param  \App\Models\Homework  $homework
      * @return \Illuminate\Http\Response
      */
-    public function edit(Homework $homework)
+    public function edit(Subject $subject, Homework $homework)
     {
-        //
+        
+        return view('homework.formHomework', compact('homework'));
     }
 
     /**
@@ -72,9 +73,11 @@ class HomeworkController extends Controller
      * @param  \App\Models\Homework  $homework
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Homework $homework)
+    public function update(Request $request,  Homework $homework)
     {
-        //
+
+        Homework::where('id', $homework->id)->update($request->except('_token', '_method'));
+        return redirect()->route('subject.show', $homework->subject);
     }
 
     /**
@@ -85,7 +88,9 @@ class HomeworkController extends Controller
      */
     public function destroy(Homework $homework)
     {
-        //
+        $homework -> delete();
+        return redirect()->route('subject.show', $homework->subject);
     }
+    
 
 }

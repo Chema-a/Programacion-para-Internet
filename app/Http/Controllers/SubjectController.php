@@ -110,6 +110,16 @@ class SubjectController extends Controller
         #dd($subject);
         return view('homework.formHomework', compact('subject'));
     }
+    public function viewHomework(Request $request, Subject $subject, Homework $homework)
+    {
+        #dd($subject);
+        return view('homework.show', compact('homework'));
+    }
+    public function updateHomework(Request $request,Homework $homework)
+    {
+
+        return view('homework.formHomework', compact('homework'));
+    }
 
 
 }

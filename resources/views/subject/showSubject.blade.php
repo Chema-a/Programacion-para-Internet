@@ -71,9 +71,14 @@
         
             @foreach ($homeworks as $homework)
             <tr>
-                <td>{{ $homework->name }}</td>
+                <td>
+                    <a href="{{ route('homework.show',[$subject, $homework]) }}">{{ $homework->name }}</a>
+                </td>
                 <td>{{ $homework->description }}</td>
                 <td>{{ $homework->end_date}}</td>
+                <td>
+                    <a href="{{ route('homework.edit', [$subject,$homework]) }}">Editar</a>
+                </td>
             </tr>
             @endforeach
 
