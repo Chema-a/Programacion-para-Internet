@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Support\Facades\Auth;
+use DateTime;
 
 class CreateNewUser implements CreatesNewUsers
 {
+
     use PasswordValidationRules;
 
     /**
@@ -28,6 +31,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'type' => ['required', 'int'],
             'registrator_code' => ['required', 'string', 'max:255'],
+            'first_login' => ['required', 'integer'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
@@ -38,6 +42,7 @@ class CreateNewUser implements CreatesNewUsers
                 'password' => Hash::make($input['password']),
                 'type' => $input['type'],
                 'registrator_code' => $input['registrator_code'],
+                'first_login' => $input['first_login'],
             ]), function (User $user) {
                 $this->createTeam($user);
             });
@@ -58,4 +63,6 @@ class CreateNewUser implements CreatesNewUsers
             'personal_team' => true,
         ]));
     }
+
+    
 }

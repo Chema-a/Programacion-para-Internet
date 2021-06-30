@@ -17,6 +17,7 @@
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <input type="hidden" name="first_login" id="first_login" value="1">
             </div>
 
             <div class="mt-4">
@@ -49,6 +50,7 @@
                     <x-jet-label for="condition" value="{{ __('Condition') }}" />
                 <x-jet-input id="condition" class="block mt-1 w-full" type="text" name="condition" :value="old('condition')" />
             </div>
+            
             </div>
         </div>
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

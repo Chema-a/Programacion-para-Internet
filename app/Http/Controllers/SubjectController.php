@@ -6,6 +6,8 @@ use App\Models\Homework;
 use App\Models\Subject;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Student;
 
 class SubjectController extends Controller
 {
@@ -39,6 +41,12 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'name' => ['required','string', 'max:255'],
+            'available_places' => ['required','integer', 'min:1']
+        ]);
+
         $subject =  Subject::create($request->all());
         return redirect()->route('subject.index');
     }
@@ -64,7 +72,6 @@ class SubjectController extends Controller
      */
     public function edit(Subject $subject)
     {
-        
         return view('subject.formSubject', compact('subject'));
     }
 
@@ -77,6 +84,10 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
+        $request->validate([
+            'name' => ['required','string', 'max:255'],
+            'available_places' => ['required','integer', 'min:1']
+        ]);
         Subject::where('id', $subject->id)->update($request->except('_token', '_method'));
         return redirect()->route('subject.index');
     }
@@ -101,11 +112,11 @@ class SubjectController extends Controller
      */
     public function addTeacher(Request $request, Subject $subject) 
     {   
-        $subject->teacher()->sync($request->teacher_id);
+        $subject->teacher() ->sync($request->teacher_id);
         return redirect()->route('subject.show', $subject);
     }
 
-    public function addHomework(Request $request, Subject $subject)
+    public function addHomework(Subject $subject)
     {
         #dd($subject);
         return view('homework.formHomework', compact('subject'));
@@ -119,6 +130,15 @@ class SubjectController extends Controller
     {
 
         return view('homework.formHomework', compact('homework'));
+    }
+    public function addStudent(Request $request)
+    { 
+
+        $user = Auth::user();
+
+        $student = $user->student;
+        $student->subjects()->attach($request->subject);
+        return redirect()->route('student.index');
     }
 
 

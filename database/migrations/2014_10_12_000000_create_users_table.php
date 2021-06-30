@@ -19,12 +19,13 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->integer('type');
             $table->string('registrator_code')->unique();
-            $table->foreign('registrator_code')->references('code')->on('registrators');
+            $table->foreign('registrator_code')->references('code')->on('registrators')->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->integer('first_login')->unsigned()->nullable();;
             $table->timestamps();
         });
     }

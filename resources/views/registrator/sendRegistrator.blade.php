@@ -7,7 +7,14 @@
     <title>Document</title>
 </head>
 <body>
+    <form action="" class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
     <h1>Registro de Usuario</h1>
-    <p>Codigo de registro: {{ $code->code }}</p>
+    <label class="block text-sm">
+        <span class="text-gray-700 dark:text-gray-400">Codigo de invitación</span>
+        <input
+            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+            type="text" name="code" id="code" value="{{ $code->code }} " readonly>
+    </label>
+    </form>
 </body>
 </html>

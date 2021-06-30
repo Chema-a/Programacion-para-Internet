@@ -1,44 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Maestros</title>
-</head>
-<body>
-    <h1>Listado de Maestros</h1>
-    <a href="{{ route('teacher.create') }}">Crear maestro</a>
-    <table>
-        <thead>
-            <tr>
-        <th>Nombre</th>
-        <th>Apellidos</th>
-        <th>Correo</th>
-        <th>Ciudad</th>
-        <th>Clases</th>
+@extends('layouts.windmill')
+@section('content')
 
-    </tr>
-    </thead>
-    <tbody>
-        @foreach ($teachers as $teacher)
-            <tr>
-                <td>
+    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        Listado de maestros
+    </h2>
+    <div class="w-full overflow-x-auto">
+        <table class="w-full whitespace-no-wrap">
+            <thead>
+                <tr
+                    class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                    <th class="px-4 py-3">Nombre</th>
+                    <th class="px-4 py-3">Correo</th>
+                    <th class="px-4 py-3">Ciudad</th>
+                    <th class="px-4 py-3">Clases</th>
+                    <th class="px-4 py-3">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                @foreach ($teachers as $teacher)
+                    <tr class="text-gray-700 dark:text-gray-400">
 
-                    <a href="{{ route('teacher.show', $teacher) }}">{{ $teacher->name_teacher }}</a>
-                </td>
-                <td>{{ $teacher->last_name_teacher }}</td>
-                <td>{{ $teacher->email }}</td>
-                <td>{{ $teacher->city }}</td>
-                @foreach ($teacher->subjects as $subject)
-                    <td>{{ $subject->name }}</td>
+                        <td class="px-4 py-3">
+                            <a class="text-purple-600" href="{{ route('teacher.show', $teacher->id) }}">{{ $teacher->user->name }}</a>
+                        </td>
+
+                        <td class="px-4 py-3 text-sm">
+                            {{ $teacher->user->email }}
+                        </td>
+
+                        <td class="px-4 py-3 text-sm">
+                            {{ $teacher->city }}
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                            @foreach ($teacher->subjects as $subject)
+                                {{ $subject->name }}
+                            @endforeach
+                        </td>
+                        <td class="px-4 py-3">
+                            <div class="flex items-center space-x-4 text-sm">
+                                <a href="{{ route('teacher.edit', $teacher->id) }}"
+                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                    aria-label="Edit">
+                                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
+                                        </path>
+                                    </svg>
+                                </a>
+
+                            </div>
+                        </td>
+                    </tr>
                 @endforeach
-                <td>
-                    <a href="{{ route('teacher.edit', $teacher) }}">Editar</a>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-    </table>
-</body>
-</html>
+            </tbody>
+        </table>
+    </div>
+@endsection

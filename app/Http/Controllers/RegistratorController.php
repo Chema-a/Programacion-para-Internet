@@ -5,6 +5,7 @@ use App\Models\Registrator;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CodeGenerator;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class RegistratorController extends Controller
 {
@@ -38,6 +39,11 @@ class RegistratorController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'email' => ['required','email', 'unique:App\Models\Registrator,email'],
+            'code' => ['required','string','min:5' ,'unique:App\Models\Registrator,code']
+        ]);
+
         $data = $request->all();
         $new = new Registrator($data);
         Mail::to($request->email)->send(new CodeGenerator($new));
@@ -76,6 +82,10 @@ class RegistratorController extends Controller
      */
     public function update(Request $request, Registrator $registrator)
     {
+        $request->validate([
+            'email' => ['required','email', Rule::unique('registrators')->ignore($registrator->id)],
+            'code' => ['required','string','min:5' , Rule::unique('registrators')->ignore($registrator->id)]
+        ]);
         $data = $request->all();
         $new = new Registrator($data);
         Registrator::where('id', $registrator->id)->update($request->except('_token', '_method'));

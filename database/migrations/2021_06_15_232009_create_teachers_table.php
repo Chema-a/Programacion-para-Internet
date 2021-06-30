@@ -15,11 +15,7 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('name_teacher');
-            $table->string('last_name_teacher');
-            $table->string('email');  
-            $table->foreign('email')->references('email')->on('users');
-
+            $table-> foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('city');   
    
         });

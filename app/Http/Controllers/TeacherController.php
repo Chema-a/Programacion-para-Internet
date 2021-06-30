@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Teacher;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class TeacherController extends Controller
 {
     /**
@@ -36,7 +36,11 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        $teacher =  Teacher::create($request->all());
+        $user = Auth::user();
+        $teacher =  Teacher::create([
+            'city' => $request->city,
+            'user_id' => $user->id
+        ]);
         return redirect()->route('teacher.index');
     }
 
@@ -46,8 +50,9 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show(Teacher $teacher)
+    public function show($id)
     {
+        $teacher = Teacher::findorfail($id);
         return view('teacher.showTeacher', compact('teacher'));
     }
 
@@ -57,8 +62,9 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teacher $teacher)
+    public function edit($id)
     {
+        $teacher = Teacher::findorfail($id);
         return view('teacher.formTeacher', compact('teacher'));
     }
 
@@ -69,9 +75,9 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request, $id)
     {
-        Teacher::where('id', $teacher->id)->update($request->except('_token', '_method'));
+        Teacher::where('id', $id)->update($request->except('_token', '_method'));
         return redirect()->route('teacher.index');
     }
 
@@ -81,8 +87,9 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teacher $teacher)
+    public function destroy($id)
     {
+        $teacher = Teacher::findorfail($id);
         $teacher -> delete();
         return redirect()->route('teacher.index');
     }

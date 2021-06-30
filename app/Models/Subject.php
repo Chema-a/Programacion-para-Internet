@@ -9,7 +9,6 @@ class Subject extends Model
 {
     use HasFactory;
     protected $fillable = ['name','teacher_id', 'available_places', 'teacher_id'];
-
     public function teacher()
     {
         return $this->belongsToMany(Teacher::class);
@@ -18,6 +17,11 @@ class Subject extends Model
     public function homework()
     {
         return $this->hasMany(Homework::class);
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
     }
     /**
  * Get the route key for the model.
