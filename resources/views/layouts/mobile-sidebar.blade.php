@@ -25,7 +25,7 @@ x-transition:leave-end="opacity-0 transform -translate-x-20"
       class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
       href="#"
     >
-      Windmill
+      Danza Aptitude
     </a>
     <ul class="mt-6">
       <li class="relative px-6 py-3">
@@ -39,7 +39,7 @@ x-transition:leave-end="opacity-0 transform -translate-x-20"
         <!-- text-gray-800 dark:text-gray-100 -->
         <a
           class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-          href="../index.html"
+          href="/"
         >
           <svg
             class="w-5 h-5"
@@ -59,6 +59,7 @@ x-transition:leave-end="opacity-0 transform -translate-x-20"
         </a>
       </li>
     </ul>
+
     <ul>
       <li class="relative px-6 py-3">
         <a
@@ -82,6 +83,8 @@ x-transition:leave-end="opacity-0 transform -translate-x-20"
           <span class="ml-4">Materias</span>
         </a>
       </li>
+
+      @auth
       <li class="relative px-6 py-3">
         <a
           class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -151,6 +154,7 @@ x-transition:leave-end="opacity-0 transform -translate-x-20"
       </li>
       </li>
     </ul>
+    @endauth
     @guest
 
     <div class="px-6 my-6">
