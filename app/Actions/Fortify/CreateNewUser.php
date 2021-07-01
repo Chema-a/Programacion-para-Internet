@@ -14,7 +14,7 @@ use DateTime;
 
 class CreateNewUser implements CreatesNewUsers
 {
-
+     
     use PasswordValidationRules;
 
     /**
@@ -30,7 +30,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'type' => ['required', 'int'],
-            'registrator_code' => ['required', 'string', 'max:255'],
+            'registrator_code' => ['exists:registrators,code','required', 'string', 'max:255'],
             'first_login' => ['required', 'integer'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();

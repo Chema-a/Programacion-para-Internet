@@ -16,6 +16,22 @@
     <script src="{{asset('js/init-alpine.js')}}"></script>
   </head>
   <body>
+  {{--('ir a menu principal')--}}
+  <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
+  <aside
+        class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"
+      >
+        <div class="py-4 text-gray-500 dark:text-gray-400">
+          <a
+            class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
+            href="/"
+          >
+            Danza Aptitude
+          </a>
+          </div>
+    </aside>
+    </header>
+  {{--('')--}}
     <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
       <div
         class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800"
