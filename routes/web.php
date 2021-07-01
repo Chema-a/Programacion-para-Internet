@@ -31,9 +31,12 @@ Route::get('protected', ['middleware' => ['auth', 'student'], function() {
 Route::get('protected', ['middleware' => ['auth', 'teacher'], function() {
     return "/teacher";
 }]);
+Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
+    return "/login";
+}]);
 
 Route::resource('teacher',TeacherController::class);
-Route::resource('registrator',RegistratorController::class);
+Route::resource('registrator',RegistratorController::class)->middleware('admin');
 
 Route::resource('homework',HomeworkController::class);
 

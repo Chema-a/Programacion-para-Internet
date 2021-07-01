@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 
 class AdminMiddleware
@@ -17,10 +18,11 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user() && $request->user()->type != '3')
-        {
-            return new Response(view('unauthorized')->with('role', 'Admin'));
+        $user = Auth()->user();
+        if ($user['type ']== '3')
+        { 
+            return "/login";
         }
-        return $next($request);
+        abort(403);
     }
 }
