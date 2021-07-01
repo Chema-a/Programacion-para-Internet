@@ -22,7 +22,8 @@ class SubjectController extends Controller
         {
             $student = Student::findorfail(auth()->user()->student['id']);
             $subjects = Subject::whereHas('students', function($query) use ($student) {
-                $query->where('id','like', [$student->id]);
+                $query->where('id','like', [$student->id]
+            );
               })->get();
         }
         elseif(auth()->user()->type == "2")
@@ -151,6 +152,8 @@ class SubjectController extends Controller
     { 
 
         $user = Auth::user();
+        $subject = Subject::findorfail($request->subject);
+        Subject::where('id', $request->subject)->update(['available_places' => $subject->available_places- 1]);
 
         $student = $user->student;
         $student->subjects()->attach($request->subject);

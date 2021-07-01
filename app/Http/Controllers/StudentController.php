@@ -113,7 +113,8 @@ class StudentController extends Controller
         $user = Auth::user();
         $student = $user->student;
 
-        $subjects = Subject::whereDoesntHave('students', function($query) use ($student) {
+        $subjects = Subject::where('available_places','>','0')
+        ->whereDoesntHave('students', function($query) use ($student) {
             $query->where('id','like', [$student->id]);
           })->get();
         
