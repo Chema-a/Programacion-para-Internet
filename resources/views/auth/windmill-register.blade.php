@@ -43,14 +43,17 @@
                 Crear una cuenta
               </h1>
 
-<form method="POST" action="{{ route('register') }}">
-            @csrf
+              <form method="POST" action="{{ route('register') }}">
+              @csrf
 
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Nombre</span>
-                <input id="name" type="text" name="name" value="{{old('name')}}" required 
+                <span class="text-gray-700 dark:text-gray-400">{{ __('Name') }}</span>
+                <input
+                  type="text"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder="Jane Doe"
+                  id="name"  name="name" 
+                  value="{{old('name')}}"
                 />
                 @error('nombre')
                 <span class="text-xs text-red-600 dark:text-red-400">{{$message}}</span>
@@ -59,21 +62,29 @@
               </label>
 
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Email</span>
-                <input id="email" type="email" name="email" value="{{old('email')}}" required autofocus autocomplete="email"
+                <span class="text-gray-700 dark:text-gray-400">{{ __('Email') }}</span>
+                <input
+                type="email"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder="JaneDoe@example.com"
+                  id="email"  
+                  name="email" 
+                  value="{{old('email')}}"
                 />
                 @error('email')
                 <span class="text-xs text-red-600 dark:text-red-400">{{$message}}</span>
                 @enderror
+                <input type="hidden" name="first_login" id="first_login" value="0">
 
               </label>
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Código de registro</span>
-                <input id="registrator_code" type="text" name="registrator_code" value="{{old('registrator_code')}}" required
+                <span class="text-gray-700 dark:text-gray-400">{{ __('Registrator Code') }}</span>
+                <input 
+                  type="text"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder="Yn72C"
+                  id="registrator_code"  name="registrator_code" 
+                  value="{{old('registrator_code')}}"
                 />
                 @error('registrator_code')
                 <span class="text-xs text-red-600 dark:text-red-400">{{$message}}</span>
@@ -82,11 +93,13 @@
               </label>
 
               <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Contraseña</span>
-                <input id="password" type="password" name="password" value="{{ old('registrator_code')}}" required
+                <span class="text-gray-700 dark:text-gray-400">{{ __('Password') }}</span>
+                <input 
+                type="password"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder="***************"
-                  type="password"
+                  id="password"  name="password" 
+                  value="{{ old('registrator_code')}}" 
                 />
                 @error('password')
                 <span class="text-xs text-red-600 dark:text-red-400">{{$message}}</span>
@@ -94,11 +107,13 @@
               </label>
 
               <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400"> Confirmar contraseña </span>
-                <input id="password_confirmation" type="password" name="password_confirmation" value="{{old('registrator_code')}}" required
+                <span class="text-gray-700 dark:text-gray-400">{{ __('Confirm Password') }}w</span>
+                <input 
+                type="password"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder="***************"
-                  type="password"
+                  id="password_confirmation"  name="password_confirmation" 
+                  
                 />
                 @error('password')
                 <span class="text-xs text-red-600 dark:text-red-400">{{$message}}</span>
@@ -108,9 +123,9 @@
               <div class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" align="center">
                   <span class="text-gray-700 dark:text-gray-400"> Tipo de cuenta </span>
                     <br>
-                    <input type="radio" name="tipo" value="1" >   Estudiante
+                    <input type="radio" id="type" name="type" value="1" >   Estudiante
                     <br>
-                    <input type="radio" name="tipo" value="2" >   Maestro
+                    <input type="radio" id="type" name="type" value="2" >   Maestro
               </div>
               @error('tipo')
               <span class="text-xs text-red-600 dark:text-red-400">{{$message}}</span>
