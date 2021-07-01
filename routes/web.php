@@ -19,7 +19,7 @@ use App\Http\Controllers\StorageController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 Route::get('inicio', function(){
     return view('inicio');

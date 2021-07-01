@@ -11,7 +11,7 @@ use App\Actions\Jetstream\RemoveTeamMember;
 use App\Actions\Jetstream\UpdateTeamName;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Jetstream\Jetstream;
-
+use Laravel\Fortify\Fortify;
 class JetstreamServiceProvider extends ServiceProvider
 {
     /**
@@ -40,6 +40,13 @@ class JetstreamServiceProvider extends ServiceProvider
         Jetstream::removeTeamMembersUsing(RemoveTeamMember::class);
         Jetstream::deleteTeamsUsing(DeleteTeam::class);
         Jetstream::deleteUsersUsing(DeleteUser::class);
+
+        Fortify::registerView(function (){
+            return view('auth.windmill-register');
+        });
+        Fortify::loginView(function (){
+            return view('auth.windmill-login');
+        });
     }
 
     /**
