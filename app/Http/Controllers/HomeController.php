@@ -35,7 +35,7 @@ class HomeController extends Controller
                 return redirect('/teacher/create');
             }
         } else {
-            return redirect('/dashboard');
+            return redirect('/');
         }
     }
 }
