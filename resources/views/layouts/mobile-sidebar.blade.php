@@ -50,6 +50,9 @@ x-transition:leave-end="opacity-0 transform -translate-x-20"
           <span class="ml-4">Materias</span>
         </a>
       </li>
+      @auth
+          
+      
       @if (auth()->user()->type == 3) 
       
       <li class="relative px-6 py-3">
@@ -122,6 +125,7 @@ x-transition:leave-end="opacity-0 transform -translate-x-20"
       </li>
     </ul>
     @endif
+    @endauth
     @guest
 
     <div class="px-6 my-6">

@@ -32,6 +32,9 @@
                 <span class="ml-4">Materias</span>
               </a>
             </li>
+            @auth
+                
+            
             @if (auth()->user()->type == 3)
                 
 
@@ -103,6 +106,7 @@
               </a>
             </li>
             @endif
+            @endauth
             <li class="relative px-6 py-3">
               @guest
 
