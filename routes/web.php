@@ -25,19 +25,12 @@ Route::get('inicio', function(){
     return view('inicio');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-
-Route::group([
-    'middleware' => 'App\Http\Middleware\TeacherMiddleware',
-    'prefix' => 'teacher',
-    'namespace' => 'Teacher'
-], function () {
-    Route::get('/registrator', 'RegistratorController@index');
-    Route::get('/teacher', 'TeacherController@index');
-});
+Route::get('protected', ['middleware' => ['auth', 'student'], function() {
+    return "/student";
+}]);
+Route::get('protected', ['middleware' => ['auth', 'teacher'], function() {
+    return "/teacher";
+}]);
 
 Route::resource('teacher',TeacherController::class);
 Route::resource('registrator',RegistratorController::class);

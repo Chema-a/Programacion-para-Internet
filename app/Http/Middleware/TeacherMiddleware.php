@@ -17,11 +17,11 @@ class TeacherMiddleware
      */
     public function handle(Request $request, Closure $next)
     {        
-        $user = Auth::user();
-        if ($user()->type == '2')
+        if (Auth::check()&& Auth::user()->type == "2")
         {
             return $next($request);
         }
+        return redirect('/teacher');
         
     }
 }
