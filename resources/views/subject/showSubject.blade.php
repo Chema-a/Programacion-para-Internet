@@ -19,7 +19,7 @@
                 name="teacher_id[]" id="teacher_id" multiple>
                 @foreach ($teachers as $teacher)
                     <option value="{{ $teacher->id }}"
-                        {{ array_search($teacher->id, $subject->teacher->pluck('id')->toArray()) !== false ? 'selected' : '' }}>
+                        {{ array_search($teacher->id, $subject->teachers->pluck('id')->toArray()) !== false ? 'selected' : '' }}>
                         {{ $teacher->user->name }}</option>
                 @endforeach
             </select>
@@ -39,7 +39,7 @@
         Maestros asignados
     </h4>
     <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-        @foreach ($subject->teacher as $teacher)
+        @foreach ($subject->teachers as $teacher)
             <p class="text-sm text-gray-600 dark:text-gray-400">
                 {{ $teacher->user->name }}
             </p>

@@ -19,5 +19,6 @@ class SubjectsSeeder extends Seeder
         Subject::create(['name'=>'Terapia creativa', 'available_places'=>'10']);
         Subject::create(['name'=>'Ballet', 'available_places'=>'15']);
         Subject::create(['name'=>'Artes y música', 'available_places'=>'16']);
+        
     }
 }

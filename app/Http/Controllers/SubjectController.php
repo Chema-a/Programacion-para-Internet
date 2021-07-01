@@ -20,21 +20,20 @@ class SubjectController extends Controller
     {
         if(auth()->user()->type == "1")
         {
-            $student = Student::findorfail(auth()->user()->student->id);
+            $student = Student::findorfail(auth()->user()->student['id']);
             $subjects = Subject::whereHas('students', function($query) use ($student) {
                 $query->where('id','like', [$student->id]);
               })->get();
         }
         elseif(auth()->user()->type == "2")
         {
-            print("hola");
-            $teacher = Teacher::findorfail(auth()->user()->teacher->id);
+            $teacher = Teacher::findorfail(auth()->user()->teacher['id']);
             $subjects = Subject::whereHas('teachers', function($query) use ($teacher) {
                 $query->where('id','like', [$teacher->id]);
               })->get();
+            
         }
         else{
-            dd(auth()->user());
         $subjects = Subject::get();
     }
         return view('subject.indexSubject', compact('subjects'));
@@ -129,7 +128,7 @@ class SubjectController extends Controller
      */
     public function addTeacher(Request $request, Subject $subject) 
     {   
-        $subject->teacher() ->sync($request->teacher_id);
+        $subject->teachers() ->sync($request->teacher_id);
         return redirect()->route('subject.show', $subject);
     }
 

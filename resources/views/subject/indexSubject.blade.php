@@ -45,7 +45,7 @@
                         </td>
 
                         <td class="px-4 py-3 text-sm">
-                            @foreach ($subject->teacher as $teacher)
+                            @foreach ($subject->teachers as $teacher)
                                 {{ $teacher->user->name }}
                             @endforeach
                         </td>

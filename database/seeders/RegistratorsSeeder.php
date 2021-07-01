@@ -19,5 +19,7 @@ class RegistratorsSeeder extends Seeder
         Registrator::create(['email' => 'test5031@gmail.com', 'code'=>'12AbE']);
         Registrator::create(['email' => 'test2031@gmail.com', 'code'=>'paPfT']);
         Registrator::create(['email' => 'test6031@gmail.com', 'code'=>'13AbT']);
+        Registrator::create(['email' => 'test6032@gmail.com', 'code'=>'15AbT']);
+        Registrator::create(['email' => 'test6034@gmail.com', 'code'=>'admin']);
     }
 }
