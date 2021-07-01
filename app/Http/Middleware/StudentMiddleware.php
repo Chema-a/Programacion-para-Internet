@@ -18,11 +18,11 @@ class StudentMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = Auth::user();
-        if ($user()->type == "1")
+        if (Auth::check()&& Auth::user()->type == "1")
         {
             return $next($request);
         }
+        return redirect('/student');
 
     }
 }

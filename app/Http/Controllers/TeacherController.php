@@ -36,12 +36,18 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'city' => ['required','string']
+        ]);
         $user = Auth::user();
         $teacher =  Teacher::create([
             'city' => $request->city,
             'user_id' => $user->id
         ]);
-        return redirect()->route('teacher.index');
+
+        $user->teacher() ->save(Teacher::findorfail($teacher->id));
+
+        return redirect('/subject');
     }
 
     /**

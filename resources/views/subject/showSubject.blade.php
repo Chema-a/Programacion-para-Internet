@@ -5,6 +5,9 @@
         {{ $subject->name }}
     </h2>
     <br>
+    @if(auth()->user()->type == 3)
+    hola
+
     <label class="block mt-4 text-sm">
         <span class="text-gray-700 dark:text-gray-400">
             Maestros Disponibles
@@ -21,6 +24,7 @@
                 @endforeach
             </select>
 
+    
 
 
             <br>
@@ -28,7 +32,8 @@
                 class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple self-center">
 
         </form>
-    </label>
+    </label>  
+    @endif
     <br>
     <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
         Maestros asignados
@@ -40,7 +45,7 @@
             </p>
         @endforeach
     </div>
-
+    @if(auth()->user()->type == 3)
     <form action="{{ route('subject.destroy', $subject) }}" method="POST">
         @csrf
         @method('DELETE')
@@ -48,7 +53,7 @@
             class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
 
     </form>
-
+    @endif
     <div>
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             Tareas
@@ -68,11 +73,13 @@
     <br>
 @endif
 
+@if(auth()->user()->type == 2)
         <form action="{{ route('subject.addHomework', $subject) }} " method=POST>
             @csrf
             <input type="submit" value="Agregar tarea"
                 class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple self-center">
         </form>
+@endif
         <div class="w-full overflow-x-auto">
             <table class="w-full whitespace-no-wrap">
                 <thead>

@@ -5,10 +5,18 @@
         Listado de materias
     </h2>
     <div>
+        @if(auth()->user()->type == 3)
         <a href="{{ route('subject.create') }}"
             class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
             Crear materia
         </a>
+        @endif
+        @if(auth()->user()->type == 1)
+        <a href="{{ route('student.viewSubject') }}"
+            class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+            Agregar materias
+        </a>
+        @endif
     </div>
     <br>
 
@@ -21,14 +29,14 @@
                     <th class="px-4 py-3">Nombre</th>
                     <th class="px-4 py-3">Maestro</th>
                     <th class="px-4 py-3">Lugares</th>
+                    @if (auth()->user()->type == 3)
                     <th class="px-4 py-3">Acciones</th>
+                    @endif
                 </tr>
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-            @if (isset($student))
-                <form action="{{ route('subject.addStudent', $student) }}" method="POST">
-                    @csrf
-            @endif
+
+           
                 @foreach ($subjects as $subject)
                     <tr class="text-gray-700 dark:text-gray-400">
 
@@ -47,10 +55,13 @@
                         </td>
                         <td class="px-4 py-3">
                             @if (isset($student))
+                            <form action="{{ route('subject.addStudent', $student) }}" method="POST">
+                                @csrf
                             <input type="hidden" name="subject" id="subject" value="{{ $subject->id }}">
                             <input type="submit" value="Agregar"  class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                             </form>
-                            @else
+                            @endif
+                            @if (auth()->user()->type == 3)
                             <div class="flex items-center space-x-4 text-sm">
                               <a href="{{ route('subject.edit', $subject) }}" class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
