@@ -10,6 +10,9 @@
             Danza Aptitude
           </a>
           <ul>
+            @auth
+                
+            
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -32,6 +35,7 @@
                 <span class="ml-4">Materias</span>
               </a>
             </li>
+            @endauth
             @auth
                 
             

@@ -19,9 +19,10 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         $user = Auth()->user();
-        if ($user['type ']== '3')
+        
+        if ($user['type'] == 3)
         { 
-            return "/login";
+            return $next($request);
         }
         abort(403);
     }

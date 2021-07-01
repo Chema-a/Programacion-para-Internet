@@ -90,7 +90,7 @@
                 @error('email')
                 <span class="text-xs text-red-600 dark:text-red-400">{{$message}}</span>
                 @enderror
-                <input type="hidden" name="first_login" id="first_login" value="0">
+                <input type="hidden" name="first_login" id="first_login" value="1">
 
               </label>
               <label class="block text-sm">
@@ -143,7 +143,7 @@
                     <br>
                     <input type="radio" id="type" name="type" value="2" >   Maestro
               </div>
-              @error('tipo')
+              @error('type')
               <span class="text-xs text-red-600 dark:text-red-400">{{$message}}</span>
               @enderror
 

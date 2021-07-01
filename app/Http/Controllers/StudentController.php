@@ -54,7 +54,7 @@ class StudentController extends Controller
             'user_id' => $user->id
         ]);
         $user->student() ->save(Student::findorfail($student->id));
-        return redirect('/dashboard');
+        return redirect('/');
     }
 
     /**
