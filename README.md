@@ -72,10 +72,10 @@ php artisan key:generate
 
 Una vez generado ya podemos modificar los datos de entorno de .env para poder trabajar, primeramente se especifican los pasos necesarios para hacer el testeo de envió de los correos de invitación y la verificación del correo.
 
-Es necesario que se ingrese a la respectiva plataforma de *mailtrap.io*, una vez registrato y logeado, dar clic a Inboxes y a "My Inbox". 
+Es necesario que se ingrese a la respectiva plataforma de [Mailtrap](mailtrap.io), una vez registrato y logeado, dar clic a Inboxes y a "My Inbox". 
 
-Después en "Integrations" buscar la opción para Laravel 7+ y reemplazar la información que tiene el archivo .env con esta nueva información personalizada que aparecerá.
-
+Después en *Integrations* buscar la opción para Laravel 7+ y reemplazar la información que tiene el archivo .env con esta nueva información personalizada que aparecerá, añadiendo en la parte de `MAIL_FROM_ADDRESS=` un correo para hacer las pruebas (se puede inventar).
+~~~
 Lo siguiente será verificar los datos de la base de datos en el mismo archivo. Dentro del archivo se encontrarán los siguientes campos:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -83,7 +83,7 @@ DB_PORT=3306
 DB_DATABASE=proyecto1
 DB_USERNAME=root
 DB_PASSWORD=
-
+~~~
 Se debe de corroborar que la información en estos campos coincida con la base de datos que se tenga (por lo general esto viene si se instaló laragon).
 Se ingresa la respectiva contraseña y usuario de la base de datos, y se pone dentro del campo correspondiente DB_DATABASE=proyecto1
 
@@ -131,5 +131,5 @@ Correo: test5031@gmail.com
 
 Contraseña: password
 
-Como dato muy importante, es necesario que primero desde la cuenta del administrador se envíe un código de verificación al correo que se desee dar de alta en el sistema para poder guardarlo exitosamente, de lo contrario, si un estudiante intentara crear una cuenta sin un código, so se podría continuar con la operación.
+Como dato muy *IMPORTANTE*, es necesario que primero desde la cuenta del administrador se __envíe__ un __código de verificación__ al correo que se desee dar de alta en el sistema para poder guardarlo exitosamente, de lo contrario, si un estudiante intentara crear una cuenta sin un código, so se podría continuar con la operación.
 
