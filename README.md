@@ -105,7 +105,7 @@ Se crea la base de datos.
 `CREATE DATABASE proyecto1`*
 ~~~
 Se hace la migración
-
+~~~
 php artisan migrate --seed
 ~~~
 Despues vamos a configurar la información de la base de datos en el *.env*
