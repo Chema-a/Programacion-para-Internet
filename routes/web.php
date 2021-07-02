@@ -30,6 +30,12 @@ Route::get('inicio', function () {
 Route::get('nosotros', function () {
     return view('nosotros');
 });
+Route::get('conocenos', function () {
+    return view('conocenos');
+});
+Route::get('contacto', function () {
+    return view('contacto');
+});
 
 
 Route::get('protected', [ 'student' => 'App\Http\Middleware\StudentMiddleware']);

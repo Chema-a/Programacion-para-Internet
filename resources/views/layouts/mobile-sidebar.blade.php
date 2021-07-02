@@ -127,14 +127,37 @@ x-transition:leave-end="opacity-0 transform -translate-x-20"
     @endif
     @endauth
     @guest
+<!-- REGISTRATE-->
 
-    <div class="px-6 my-6">
-        <a class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-            href="{{ route('register') }}">
-            Registrarse
-            <span class="ml-2" aria-hidden="true">+</span>
-        </a>
-    </div>
+<div class="px-6 my-6">
+                <a class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" href="nosotros">
+                  Nosotros
+                  <span class="ml-2" aria-hidden="true">¬</span>
+                </a>
+              </div>
+              <div class="px-6 my-6">
+                <a class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" href="conocenos">
+                  Conocenos
+                  <span class="ml-2" aria-hidden="true">¬</span>
+                </a>
+              </div>
+              <div class="px-6 my-6">
+                <a class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" href="contacto">
+                  Contacto
+                  <span class="ml-2" aria-hidden="true">¬</span>
+                </a>
+              </div>
+
+              <div class="px-6 my-6">
+                <a class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" href="{{ route('register') }}">
+                  Registrarse
+                  <span class="ml-2" aria-hidden="true">+</span>
+                </a>
+              </div>
+
+              
+              <!-- -->
+
 @endguest
   </div>
 

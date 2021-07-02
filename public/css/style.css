@@ -796,7 +796,7 @@ body#inner_page header.header {
 /* PATRON DE MOSAICO  */
 
 .mosaic_pattern_bg {
-    background-image: url('.. images/pink_bg.png');
+    background-image: url('../images/pink_bg.png');
     background-attachment: fixed;
     background-position: center center;
     min-height: 300px;
@@ -1181,7 +1181,7 @@ a {
 /* DECORACION DE PUNTOS */
 
 .about_dottat {
-    background: url('images/dottet_bg.png');
+    background: url('../images/dottet_bg.png');
     background-size: cover;
     background-color: #464608;
     background-blend-mode: hard-light;
