@@ -131,5 +131,5 @@ Correo: test5031@gmail.com
 
 Contraseña: password
 
-Como dato muy *IMPORTANTE*, es necesario que primero desde la cuenta del administrador se __envíe__ un __código de verificación__ al correo que se desee dar de alta en el sistema para poder guardarlo exitosamente, de lo contrario, si un estudiante intentara crear una cuenta sin un código, so se podría continuar con la operación.
+Como dato muy **IMPORTANTE**, es necesario que primero desde la cuenta del administrador se **envíe un código de verificación** al correo que se desee dar de alta en el sistema para poder guardarlo exitosamente, de lo contrario, si un estudiante intentara crear una cuenta sin un código, so se podría continuar con la operación.
 
