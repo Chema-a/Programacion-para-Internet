@@ -71,23 +71,45 @@ php artisan key:generate
 
 Una vez generado ya podemos modificar los datos de entorno de .env para poder trabajar, primeramente se especifican los pasos necesarios para hacer el testeo de envió de los correos de invitación y la verificación del correo.
 
-Es necesario que se ingrese a la respectiva plataforma de *mailtrap.io*, una vez registrato y logeado; dar clic a Inboxes y a "My Inbox". 
+Es necesario que se ingrese a la respectiva plataforma de *mailtrap.io*, una vez registrato y logeado, dar clic a Inboxes y a "My Inbox". 
 
-Después en "Integrations" buscar la opción para Laravel 7+ y reemplazar la información del .env con esta nueva información personalizada
+Después en "Integrations" buscar la opción para Laravel 7+ y reemplazar la información que tiene el archivo .env con esta nueva información personalizada que aparecerá.
+
+Lo siguiente será verificar los datos de la base de datos en el mismo archivo. Dentro del archivo se encontrarán los siguientes campos:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=proyecto1
+DB_USERNAME=root
+DB_PASSWORD=
+
+Se debe de corroborar que la información en estos campos coincida con la base de datos que se tenga (por lo general esto viene si se instaló laragon).
+Se ingresa la respectiva contraseña y usuario de la base de datos, y se pone dentro del campo correspondiente DB_DATABASE=proyecto1
+
 
 Ya tenemos nuestra aplicación instalada, ahora ejecutaremos nuestros seeders y migraciones.
+
 ~~~
-php artisan migrate --seed
-~~~
-Despues vamos a configurar la información de la base de datos en el *.env*
-~~~
+Dentro del archivo .env se verifica que estén los siguientes datos correctos.
+
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=proyecto1 -> Se tiene que crear una base de datos con este nombre
 DB_USERNAME=root
 DB_PASSWORD= -> Poner password de base de dato
+
+Se crea la base de datos. 
+*nota: se puede crear una base de datos desde consola de Laragon (implementado en este protecto) ingresando a mysql: 
+`mysql -uroot` 
+`CREATE DATABASE proyecto1`*
 ~~~
+Se hace la migración
+
+php artisan migrate --seed
+~~~
+Despues vamos a configurar la información de la base de datos en el *.env*
+
 
 
 A continuación se especifican 3 tipos de cuentas creadas con los Seeders para que pueda ingresar y revisar las funciones de cada tipo de usuario:
