@@ -59,7 +59,7 @@ Route::post('subject/add-student', [SubjectController::class, 'addStudent'])->na
 
 Route::resource('formulario', StorageController::class)->middleware('auth');
 
-Route::resource('archivo', ArchivoController::class);
+Route::resource('archivo', ArchivoController::class)->middleware('auth');
 
 
 Route::resource('subject', SubjectController::class)->middleware('auth');
