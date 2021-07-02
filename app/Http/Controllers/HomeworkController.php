@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Archivo;
 use App\Models\Homework;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -65,7 +66,15 @@ class HomeworkController extends Controller
      */
     public function show(Subject $subject, Homework $homework)
     {
-        return view('homework.showHomework', compact('homework'));
+        if(auth()->user()->type == "1")
+        {
+            $archivos = Archivo::where('homework_id', $homework->id)->get();
+            return view('homework.showHomework', compact('homework', 'archivos'));
+        }
+        else{
+            return view('homework.showHomework', compact('homework'));
+        }
+        
     }
 
     /**

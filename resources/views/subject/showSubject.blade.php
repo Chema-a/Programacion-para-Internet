@@ -5,34 +5,34 @@
         {{ $subject->name }}
     </h2>
     <br>
-    @if(auth()->user()->type == 3)
-    hola
+    @if (auth()->user()->type == 3)
+        hola
 
-    <label class="block mt-4 text-sm">
-        <span class="text-gray-700 dark:text-gray-400">
-            Maestros Disponibles
-        </span>
-        <form action=" {{ route('subject.addTeacher', $subject) }}" method="POST">
-            @csrf
-            <select
-                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-multiselect focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                name="teacher_id[]" id="teacher_id" multiple>
-                @foreach ($teachers as $teacher)
-                    <option value="{{ $teacher->id }}"
-                        {{ array_search($teacher->id, $subject->teachers->pluck('id')->toArray()) !== false ? 'selected' : '' }}>
-                        {{ $teacher->user->name }}</option>
-                @endforeach
-            </select>
-
-    
+        <label class="block mt-4 text-sm">
+            <span class="text-gray-700 dark:text-gray-400">
+                Maestros Disponibles
+            </span>
+            <form action=" {{ route('subject.addTeacher', $subject) }}" method="POST">
+                @csrf
+                <select
+                    class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-multiselect focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                    name="teacher_id[]" id="teacher_id" multiple>
+                    @foreach ($teachers as $teacher)
+                        <option value="{{ $teacher->id }}"
+                            {{ array_search($teacher->id, $subject->teachers->pluck('id')->toArray()) !== false ? 'selected' : '' }}>
+                            {{ $teacher->user->name }}</option>
+                    @endforeach
+                </select>
 
 
-            <br>
-            <input type="submit" value="Agregar Maestro"
-                class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple self-center">
 
-        </form>
-    </label>  
+
+                <br>
+                <input type="submit" value="Agregar Maestro"
+                    class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple self-center">
+
+            </form>
+        </label>
     @endif
     <br>
     <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
@@ -45,41 +45,41 @@
             </p>
         @endforeach
     </div>
-    @if(auth()->user()->type == 3)
-    <form action="{{ route('subject.destroy', $subject) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <input type="submit" value="Eliminar programa"
-            class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+    @if (auth()->user()->type == 3)
+        <form action="{{ route('subject.destroy', $subject) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input type="submit" value="Eliminar programa"
+                class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
 
-    </form>
+        </form>
     @endif
     <div>
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             Tareas
         </h2>
         @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
-                <h4 class="mb-4 font-semibold"> Faltan valores de tarea </h4>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                  
-                </div>
-        </ul>
-    </div>
-    <br>
-@endif
+            <div class="alert alert-danger">
+                <ul>
+                    <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
+                        <h4 class="mb-4 font-semibold"> Faltan valores de tarea </h4>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
 
-@if(auth()->user()->type == 2)
-        <form action="{{ route('subject.addHomework', $subject) }} " method=POST>
-            @csrf
-            <input type="submit" value="Agregar tarea"
-                class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple self-center">
-        </form>
-@endif
+                    </div>
+                </ul>
+            </div>
+            <br>
+        @endif
+
+        @if (auth()->user()->type == 2)
+            <form action="{{ route('subject.addHomework', $subject) }} " method=POST>
+                @csrf
+                <input type="submit" value="Agregar tarea"
+                    class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple self-center">
+            </form>
+        @endif
         <div class="w-full overflow-x-auto">
             <table class="w-full whitespace-no-wrap">
                 <thead>
@@ -96,15 +96,15 @@
                         <tr class="text-gray-700 dark:text-gray-400">
 
                             <td class="px-4 py-3 text-sm"">
-                                    <a class=" text-purple-600"
+                                        <a class=" text-purple-600"
                                 href="{{ route('homework.show', [$subject, $homework]) }}">{{ $homework->name }}</a>
                             </td>
                             <td class="px-4 py-3 text-sm">
-                            {{ $homework->description }}
+                                {{ $homework->description }}
                             </td>
 
                             <td class="px-4 py-3 text-sm">
-                            {{ $homework->end_date }}
+                                {{ $homework->end_date }}
                             </td>
                             <td class="px-4 py-3">
 
@@ -126,6 +126,19 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div>
+        <br>
+        <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
+            Estudiantes
+        </h4>
+        <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+            @foreach ($subject->students as $student)
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    {{ $student->user->name }}
+                </p>
+            @endforeach
         </div>
     </div>
 @endsection

@@ -15,6 +15,11 @@ class Homework extends Model
     {
         return $this->belongsTo(Subject::class);
     }
+
+
+    public function archivos(){
+        return $this->hasMany(Archivo::class);
+    }
     /**
  * Get the route key for the model.
  *

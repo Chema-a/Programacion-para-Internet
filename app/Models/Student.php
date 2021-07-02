@@ -18,6 +18,11 @@ class Student extends Model
     {
         return $this->belongsToMany(Subject::class);
     }
+
+    public function archivos()
+    {
+        return $this->hasMany(Archivo::class);
+    }
     
     public $timestamps = false;
 }

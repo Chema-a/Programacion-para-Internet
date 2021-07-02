@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchivoController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
@@ -49,6 +50,7 @@ Route::post('subject/add-student', [SubjectController::class, 'addStudent'])->na
 
 Route::resource('formulario', StorageController::class)->middleware('auth');
 
+Route::resource('archivo', ArchivoController::class);
 
 
 Route::resource('subject', SubjectController::class)->middleware('auth');
