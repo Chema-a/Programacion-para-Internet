@@ -90,16 +90,16 @@ Se ingresa la respectiva contraseña y usuario de la base de datos, y se pone de
 
 Ya tenemos nuestra aplicación instalada, ahora ejecutaremos nuestros seeders y migraciones.
 
-~~~
-Dentro del archivo .env se verifica que estén los siguientes datos correctos.
 
+Dentro del archivo .env se verifica que estén los siguientes datos correctos.
+~~~
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=proyecto1 -> Se tiene que crear una base de datos con este nombre
 DB_USERNAME=root
 DB_PASSWORD= -> Poner password de base de dato
-
+~~~
 Se crea la base de datos. 
 nota: se puede crear una base de datos desde consola de Laragon (implementado en este protecto) ingresando a mysql: 
 ~~~
@@ -131,5 +131,5 @@ Correo: test5031@gmail.com
 
 Contraseña: password
 
-Como dato muy **IMPORTANTE**, es necesario que primero desde la cuenta del administrador se **envíe un código de verificación** al correo que se desee dar de alta en el sistema para poder guardarlo exitosamente, de lo contrario, si un estudiante intentara crear una cuenta sin un código, so se podría continuar con la operación.
+Como dato muy **IMPORTANTE**, es necesario que primero desde la cuenta del **administrador** se *envíe un código de verificación* al correo que se desee dar de alta en el sistema para poder guardarlo exitosamente, de lo contrario, si un estudiante intentara crear una cuenta sin un código, so se podría continuar con la operación.
 
