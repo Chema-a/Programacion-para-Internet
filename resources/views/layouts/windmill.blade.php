@@ -50,7 +50,8 @@
               </svg>
             </button>
             <!-- Search input -->
-            @include('layouts.search')
+            
+            <!--@include('layouts.search')-->
 
             <ul class="flex items-center flex-shrink-0 space-x-6">
               <!-- Theme toggler -->
