@@ -51,6 +51,7 @@ Los archivos .env y la carpeta /vendor no aparecerán
 
 Nos dirigimos a nuestra terminal y nos posicionamos en la carpeta donde se encuentra nuestro proyecto y ejecutamos.
 ~~~
+cd Programacion-para-internet
 composer install
 ~~~
 
@@ -100,9 +101,10 @@ DB_USERNAME=root
 DB_PASSWORD= -> Poner password de base de dato
 
 Se crea la base de datos. 
-*nota: se puede crear una base de datos desde consola de Laragon (implementado en este protecto) ingresando a mysql: 
-`mysql -uroot` 
-`CREATE DATABASE proyecto1`*
+nota: se puede crear una base de datos desde consola de Laragon (implementado en este protecto) ingresando a mysql: 
+~~~
+mysql -uroot password
+CREATE DATABASE proyecto1;
 ~~~
 Se hace la migración
 ~~~
