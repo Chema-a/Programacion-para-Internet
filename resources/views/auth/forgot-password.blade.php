@@ -43,7 +43,7 @@
                 Forgot password
               </h1>
 
-              <form method="POST" action="{{ route('password.update') }}">
+              <form method="POST" action="{{ route('password.email') }}">
             @csrf
 
               <label class="block text-sm">
