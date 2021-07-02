@@ -144,7 +144,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="text_align_center">
-                            <a class="purple_bt" href="https://docs.google.com/forms/d/e/1FAIpQLScwfn8_fyF5V5VRMzh2DdTW-6BszEU2L5c6NQHQ8HeCdOp6Iw/viewform" target="_blank">Clase de prueba</a>
+                            <a class="purple_bt" href="{{ route('register') }}" target="_blank">Registrate</a>
                         </div>
                     </div>
                 </div>
